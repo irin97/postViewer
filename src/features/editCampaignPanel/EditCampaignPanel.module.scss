@@ -1,0 +1,153 @@
+.overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: flex-end;
+    background: rgba(17, 24, 39, 0.15);
+    backdrop-filter: blur(1px);
+    z-index: 1000;
+}
+
+.drawer {
+    width: 480px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--white);
+    box-shadow: -8px 0 24px rgba(15, 23, 42, 0.08);
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 32px;
+    border-bottom: 1px solid var(--border);
+}
+
+.title {
+    margin: 0;
+    color: var(--text);
+    font-size: 22px;
+    line-height: 32px;
+    font-weight: 700;
+}
+
+.closeButton {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: var(--border-radius);
+    background: var(--white);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.closeButton:hover {
+    background: var(--background);
+    color: var(--text);
+}
+
+.form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    row-gap: 24px;
+    padding: 32px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.label {
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.projectName {
+    padding: 16px 16px;
+    border-radius: var(--border-radius);
+    background: var(--background);
+    color: var(--text);
+    font-size: 16px;
+}
+
+.input,
+.select {
+    padding: 16px 16px;
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius);
+    background: var(--white);
+    color: var(--text);
+    font-size: 16px;
+    outline: none;
+    transition:
+        border-color 0.3s ease-in-out,
+        box-shadow 0.3s ease-in-out,
+        background-color 0.3s ease-in-out;
+}
+
+.input:hover,
+.select:hover {
+    border-color: var(--primary);
+}
+
+.input:focus,
+.select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(16, 84, 228, 0.12);
+}
+
+.error {
+    color: var(--error);
+    font-size: 14px;
+}
+
+.footer {
+    margin-top: auto;
+    display: flex;
+    gap: 12px;
+}
+
+.cancelButton,
+.saveButton {
+    flex: 1;
+    padding: 16px;
+    border-radius: var(--border-radius);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        background-color 0.3s ease-in-out,
+        border-color 0.3s ease-in-out,
+}
+
+.cancelButton {
+    border: 1px solid var(--border);
+    background: var(--white);
+    color: var(--text);
+}
+
+.cancelButton:hover {
+    background: var(--primary-light);
+    border-color: var(--border-hover);
+}
+
+.saveButton {
+    border: none;
+    background: var(--primary);
+    color: var(--white);
+}
+
+.saveButton:hover {
+    background: var(--btn-hover);
+}
+
+.saveButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}

@@ -4,7 +4,7 @@
     padding: 20px;
     background: var(--white);
     border: 1px solid var(--border);
-    border-radius: 20px;
+    border-radius: var(--border-radius);
     transition: all 0.3s ease-in-out;
 }
 
@@ -20,7 +20,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 16px;
+    border-radius: var(--border-radius);
     background: var(--primary-light);
 }
 
@@ -55,7 +55,7 @@
     justify-content: center;
     background: var(--white);
     border: 1px solid var(--border);
-    border-radius: 12px;
+    border-radius: var(--border-radius);
     cursor: pointer;
     transition: background 0.3s ease-in-out;
 }

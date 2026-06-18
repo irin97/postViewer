@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import type { EditCampaignPanelProps, formDataType } from "./types";
 import type { FullCampaignData } from "@/shared/api";
 import { useEditCampaignInfoMutation } from "@/shared/api";
+import styles from "./EditCampaignPanel.module.scss";
 
 export const EditCampaignPanel = ({ handleOpen, data }: EditCampaignPanelProps) => {
 
@@ -40,50 +41,68 @@ export const EditCampaignPanel = ({ handleOpen, data }: EditCampaignPanelProps) 
         }
     }
 
-    return createPortal(<div>
-        <div>
-            <h2>
-                Редактирование проекта
-            </h2>
-            <button onClick={() => handleOpen(null)}>x</button>
-        </div>
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <div>
-                Название проекта: {title}
-            </div>
-            <div>
-                <div>Процент перезвона:</div>
-                <input type="number" {...register('step_percent', {
-                    valueAsNumber: true,
-                    required: 'Поле обязательно для заполнения',
-                    min: { value: 0, message: 'Процент перезвона должен быть больше 0' },
-                    max: { value: 100, message: 'Процент перезвона должен быть меньше 100' }
-                })} />
-                {errors.step_percent && <div>{errors.step_percent.message}</div>}
-            </div>
-            <div>
-                <div>CPS:</div>
-                <input type="number" {...register('cps', {
-                    valueAsNumber: true,
-                    required: 'Поле обязательно для заполнения',
-                    min: { value: 0, message: 'CPS должен быть больше 0' }
-                })} />
-                {errors.cps && <div>{errors.cps.message}</div>}
-            </div>
-            <div>
-                <div>Тип автонабора</div>
-                <select {...register('auto_dial_type')}>
-                    <option>predictive</option>
-                    <option>predictive_adaptive</option>
-                    <option>not_limited</option>
-                    <option>manual</option>
-                </select>
-            </div>
-            <div>
-                <button type='button' onClick={() => reset()}>Отменить</button>
-                <button type='submit' disabled={!isDirty || isLoading}>{isLoading ? 'Сохранение...' : 'Сохранить'}</button>
-            </div>
-        </form>
-    </div>, document.querySelector('#modal')!
+    return createPortal(
+        <div className={styles.overlay}>
+            <aside className={styles.drawer}>
+                <div className={styles.header}>
+                    <h2 className={styles.title}>
+                        Редактирование проекта
+                    </h2>
+                    <button
+                        type="button"
+                        className={styles.closeButton}
+                        onClick={() => handleOpen(null)}>
+                        ✕
+                    </button>
+                </div>
+
+                <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+                    <div className={styles.field}>
+                        <span className={styles.label}>Название проекта</span>
+                        <div className={styles.projectName}>
+                            {title}
+                        </div>
+                    </div>
+
+                    <div className={styles.field}>
+                        <span className={styles.label}>Процент перезвона</span>
+                        <input className={styles.input} type="number" {...register('step_percent', {
+                            valueAsNumber: true,
+                            required: 'Поле обязательно для заполнения',
+                            min: { value: 0, message: 'Процент перезвона должен быть больше 0' },
+                            max: { value: 100, message: 'Процент перезвона должен быть меньше 100' }
+                        })} />
+                        {errors.step_percent && <span className={styles.error}> {errors.step_percent.message} </span>}
+                    </div>
+
+                    <div className={styles.field}>
+                        <span className={styles.label}>CPS</span>
+                        <input className={styles.input} type="number" {...register('cps', {
+                            valueAsNumber: true,
+                            required: 'Поле обязательно для заполнения',
+                            min: { value: 0, message: 'CPS должен быть больше 0' }
+                        })} />
+                        {errors.cps && <span className={styles.error}>{errors.cps.message}</span>}
+                    </div>
+
+                    <div className={styles.field}>
+                        <span className={styles.label}>Тип автонабора</span>
+                        <select className={styles.select} {...register('auto_dial_type')}>
+                            <option>predictive</option>
+                            <option>predictive_adaptive</option>
+                            <option>not_limited</option>
+                            <option>manual</option>
+                        </select>
+                    </div>
+
+                    <div className={styles.footer}>
+                        <button type='button' className={styles.cancelButton} onClick={() => reset()}>Отменить</button>
+                        <button type='submit' className={styles.saveButton} disabled={!isDirty || isLoading}>
+                            {isLoading ? 'Сохранение...' : 'Сохранить'}
+                        </button>
+                    </div>
+                </form>
+            </aside>
+        </div>, document.querySelector('#modal')!
     )
 }
