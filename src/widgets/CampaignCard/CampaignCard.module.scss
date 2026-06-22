@@ -42,8 +42,8 @@
 }
 
 .name {
-    font-size: 22px;
-    font-weight: 700;
+    font-size: var(--font-l);
+    font-weight: var(--font-bold);
     color: var(--text);
 }
 
@@ -74,8 +74,8 @@
     align-items: center;
     gap: 12px;
     margin-bottom: 10px;
-    font-size: 20px;
-    font-weight: 500;
+    font-size: var(--font-m);
+    font-weight: var(--font-medium);
     color: var(--text-secondary)
 }
 
@@ -83,7 +83,7 @@
     display: flex;
     align-items: center;
     margin-bottom: 15px;
-    font-size: 20px;
+    font-size: var(--font-m);
     color: var(--text-secondary)
 }
 
@@ -100,12 +100,12 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    font-size: 20px;
+    font-size: var(--font-m);
     color: var(--text-secondary)
 }
 
 .value {
-    font-weight: 600;
+    font-weight: var(--font-semibold);
     color: var(--primary)
 }
 
