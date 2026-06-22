@@ -1,7 +1,7 @@
 import { baseQueryWithReauth } from "./reauthQuery";
 import { createApi } from "@reduxjs/toolkit/query/react";
 import type { ActiveCampaignRes, CallInfoRes, EditCampaignInfoParam } from "./apiTypes";
-import qs from 'qs';
+import { serializeForm } from "../lib/serializeForm";
 
 export const campaignApi = createApi({
 
@@ -21,20 +21,22 @@ export const campaignApi = createApi({
         }),
         editCampaignInfo: build.mutation<CallInfoRes, EditCampaignInfoParam>({
             query: ({ data, id }) => {
-                const urlEncodedBody = qs.stringify(data, { encode: true });
+                const params = serializeForm(data);
+
                 return {
                     url: `robot/campaign/update/${id}`,
-                    method: 'PUT',
+                    method: "PUT",
                     headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
+                        "Content-Type": "application/x-www-form-urlencoded"
                     },
-                    body: urlEncodedBody
+                    body: params.toString()
                 };
             },
-            invalidatesTags: ['Campaign']
+            invalidatesTags: ["Campaign"]
         })
     })
 })
+
 
 
 export const { useActiveCampaignsQuery, useOldCallInfoQuery, useNewCallInfoQuery, useEditCampaignInfoMutation } = campaignApi

@@ -25,11 +25,9 @@ export interface CallInfoType {
     count?: number
 }
 
-export interface FullCampaignData extends CampaignInfo {
-    [key: string]: unknown;
-}
+type EditCampaignForm = Partial<CampaignInfo>;
 
 export interface EditCampaignInfoParam {
-    data: FullCampaignData,
-    id: number
+    data: EditCampaignForm;
+    id: number;
 }
