@@ -6,8 +6,4 @@ export interface EditCampaignPanelProps {
     handleOpen: Dispatch<SetStateAction<number | null>>
 }
 
-export interface formDataType {
-    step_percent: number,
-    cps: number,
-    auto_dial_type: string
-}
+export type formDataType = Pick<CampaignInfo, "step_percent" | "cps" | "auto_dial_type">;

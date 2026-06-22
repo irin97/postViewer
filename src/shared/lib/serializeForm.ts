@@ -1,9 +1,10 @@
 type Primitive = string | number | boolean | null | undefined;
-type FormValue = Primitive | FormObject | FormValue[];
+export type FormValue = Primitive | FormObject | FormValue[];
 
 interface FormObject {
     [key: string]: FormValue;
 }
+
 
 export function serializeForm(
     obj: FormValue,

@@ -2,6 +2,7 @@ import { baseQueryWithReauth } from "./reauthQuery";
 import { createApi } from "@reduxjs/toolkit/query/react";
 import type { ActiveCampaignRes, CallInfoRes, EditCampaignInfoParam } from "./apiTypes";
 import { serializeForm } from "../lib/serializeForm";
+import type { FormValue } from "../lib/serializeForm";
 
 export const campaignApi = createApi({
 
@@ -21,7 +22,7 @@ export const campaignApi = createApi({
         }),
         editCampaignInfo: build.mutation<CallInfoRes, EditCampaignInfoParam>({
             query: ({ data, id }) => {
-                const params = serializeForm(data);
+                const params = serializeForm(data as unknown as FormValue);
 
                 return {
                     url: `robot/campaign/update/${id}`,

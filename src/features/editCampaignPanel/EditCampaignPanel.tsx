@@ -2,7 +2,7 @@ import { createPortal } from "react-dom";
 import { useForm } from 'react-hook-form';
 import { useEffect } from "react";
 import type { EditCampaignPanelProps, formDataType } from "./types";
-import type { FullCampaignData } from "@/shared/api";
+import type { CampaignInfo } from "@/shared/api";
 import { useEditCampaignInfoMutation } from "@/shared/api";
 import styles from "./EditCampaignPanel.module.scss";
 
@@ -10,7 +10,7 @@ export const EditCampaignPanel = ({ handleOpen, data }: EditCampaignPanelProps) 
 
     const { id, title, step_percent, cps, auto_dial_type } = data;
     const [updateInfo, { isLoading }] = useEditCampaignInfoMutation();
-    const { register, handleSubmit, formState: { errors, isDirty }, reset } = useForm({
+    const { register, handleSubmit, formState: { errors, isDirty }, reset } = useForm<formDataType>({
         defaultValues: {
             step_percent,
             cps,
@@ -29,7 +29,7 @@ export const EditCampaignPanel = ({ handleOpen, data }: EditCampaignPanelProps) 
     const onSubmit = async (formData: formDataType) => {
         console.log('Отправляются данные:', formData);
 
-        const updatedData: FullCampaignData = {
+        const updatedData: CampaignInfo = {
             ...data,
             ...formData
         }

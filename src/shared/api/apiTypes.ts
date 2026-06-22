@@ -17,6 +17,8 @@ export interface CampaignInfo {
     step_percent: number,
     cps: number,
     auto_dial_type: string
+
+    [key: string]: unknown;
 }
 
 export type CallInfoRes = CallInfoType[]
@@ -25,9 +27,7 @@ export interface CallInfoType {
     count?: number
 }
 
-type EditCampaignForm = Partial<CampaignInfo>;
-
 export interface EditCampaignInfoParam {
-    data: EditCampaignForm;
     id: number;
+    data: CampaignInfo;
 }
