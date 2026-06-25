@@ -1,0 +1,53 @@
+.wrapper {
+    padding-top: 40px;
+    width: 49%;
+}
+
+.queueCard {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 30px 18px;
+    margin-bottom: 16px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius);
+}
+
+.queueIcon {
+    width: 65px;
+    height: 65px;
+    border-radius: var(--border-radius);
+    background: var(--primary-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+.queueText {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    color: var(--text);
+}
+
+.queueTitle {
+    font-size: var(--font-s);
+}
+
+.queueValue {
+    font-size: var(--font-l);
+    font-weight: var(--font-bold);
+    color: var(--primary);
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

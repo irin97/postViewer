@@ -4,7 +4,10 @@ import { useEffect } from "react";
 import type { EditCampaignPanelProps, formDataType } from "./types";
 import type { CampaignInfo } from "@/shared/api";
 import { useEditCampaignInfoMutation } from "@/shared/api";
+import { useAppDispatch } from "@/app/store/hooks";
 import styles from "./EditCampaignPanel.module.scss";
+import { showNotification } from "@/shared/model/notification/notificationSlice";
+import { getApiErrorMessage } from "@/shared/lib/getApiErrorMessage";
 
 export const EditCampaignPanel = ({ handleOpen, data }: EditCampaignPanelProps) => {
 
@@ -18,6 +21,8 @@ export const EditCampaignPanel = ({ handleOpen, data }: EditCampaignPanelProps) 
         }
     });
 
+    const dispatch = useAppDispatch();
+
     useEffect(() => {
         reset({
             step_percent,
@@ -27,23 +32,30 @@ export const EditCampaignPanel = ({ handleOpen, data }: EditCampaignPanelProps) 
     }, [step_percent, cps, auto_dial_type, reset])
 
     const onSubmit = async (formData: formDataType) => {
-        console.log('Отправляются данные:', formData);
-
         const updatedData: CampaignInfo = {
             ...data,
             ...formData
         }
+
         try {
             await updateInfo({ data: updatedData, id }).unwrap();
+            dispatch(showNotification({
+                type: 'success',
+                title: 'Успешно сохранено'
+            }))
             handleOpen(null);
         } catch (err) {
-            console.log(err)
+            dispatch(showNotification({
+                type: 'error',
+                title: 'Ошибка сохранения',
+                message: getApiErrorMessage(err)
+            }))
         }
     }
 
     return createPortal(
-        <div className={styles.overlay}>
-            <aside className={styles.drawer}>
+        <div className={styles.overlay} onClick={() => handleOpen(null)}>
+            <aside className={styles.drawer} onClick={(e) => e.stopPropagation()}>
                 <div className={styles.header}>
                     <h2 className={styles.title}>
                         Редактирование проекта
@@ -87,12 +99,15 @@ export const EditCampaignPanel = ({ handleOpen, data }: EditCampaignPanelProps) 
 
                     <div className={styles.field}>
                         <span className={styles.label}>Тип автонабора</span>
-                        <select className={styles.select} {...register('auto_dial_type')}>
-                            <option>predictive</option>
-                            <option>predictive_adaptive</option>
-                            <option>not_limited</option>
-                            <option>manual</option>
-                        </select>
+                        <div className={styles.wrapper}>
+                            <select className={styles.select} {...register('auto_dial_type')}>
+                                <option>predictive</option>
+                                <option>predictive_adaptive</option>
+                                <option>not_limited</option>
+                                <option>manual</option>
+                            </select>
+                        </div>
+
                     </div>
 
                     <div className={styles.footer}>

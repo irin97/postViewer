@@ -18,10 +18,17 @@ export function serializeForm(
         return params;
     }
 
+    // if (Array.isArray(obj)) {
+    //     obj.forEach((value, index) => {
+    //         const key = `${prefix}[${index}]`;
+    //         serializeForm(value, key, params);
+    //     });
+    //     return params;
+    // }
+
     if (Array.isArray(obj)) {
-        obj.forEach((value, index) => {
-            const key = `${prefix}[${index}]`;
-            serializeForm(value, key, params);
+        obj.forEach((value) => {
+            params.append(prefix, String(value));
         });
         return params;
     }

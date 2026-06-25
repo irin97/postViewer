@@ -23,7 +23,7 @@ export const baseQueryWithReauth: BaseQueryFn<
 > = async (args, api, extraOptions) => {
     let result = await baseQuery(args, api, extraOptions);
 
-    if (result.error && 'data' in result.error && (result.error.data as LoginErr).message === 'JWT Token not found') {
+    if (result.error && 'data' in result.error && (result.error.data as LoginErr).code === 401) {
         const loginResult = await api.dispatch(
             loginApi.endpoints.login.initiate()
         );

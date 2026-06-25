@@ -1,27 +1,54 @@
-import { useActiveCampaignsQuery } from "@/shared/api";
+import { useActiveCampaignsQuery, type CampaignInfo } from "@/shared/api";
 import { CampaignCard } from "../CampaignCard/CampaignCard";
 import { EditCampaignPanel } from "@/features/editCampaignPanel/EditCampaignPanel";
-import type { CampaignInfo } from "@/shared/api";
-import { useState } from 'react'
-import styles from "./CampaignList.module.scss"
+import { useState, useEffect } from 'react';
+import { Loader } from "@/shared/ui/Loader/Loader";
+import { useAppDispatch } from "@/app/store/hooks";
+import { showNotification } from "@/shared/model/notification/notificationSlice";
+import { getApiErrorMessage } from "@/shared/lib/getApiErrorMessage";
+import styles from "./CampaignList.module.scss";
 
 export const CampaignList = () => {
 
     const { data: activeCampaigns, error, isLoading } = useActiveCampaignsQuery();
     const [openIdCard, setOpenIdCard] = useState<null | number>(null);
+    const dispatch = useAppDispatch();
 
-    if (isLoading) return <>Загрузка...</>
-    if (error) {
-        console.log(error)
-        return <>Ошибка</>
-    }
+    useEffect(() => {
+        if (openIdCard === null) return
 
-    const campaigns = activeCampaigns?.items || [];
+        const handleEcsKey = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') setOpenIdCard(null)
+        }
+
+        document.addEventListener('keydown', handleEcsKey)
+
+        return () => document.removeEventListener('keydown', handleEcsKey)
+    }, [openIdCard])
+
+
+    useEffect(() => {
+        if (!error) return
+
+        dispatch(showNotification({
+            type: 'error',
+            title: 'Произошла ошибка',
+            message: getApiErrorMessage(error)
+        }))
+    }, [error, dispatch]);
+
+    // if (isLoading) return <Loader />
+    // if (error) return <div className={styles.error}>Не удалось загрузить данные</div>
+
+    const campaigns = activeCampaigns?.items ?? [];
     const openCardData = campaigns.find((el) => el.id === openIdCard);
 
 
     return (<>
         <div className={styles.wrapper}>
+            {isLoading && <Loader />}
+            {error && <div className={styles.error}>Не удалось загрузить данные</div>}
+
             <div className={styles.list}>
                 {campaigns.map((campaign: CampaignInfo) => (
                     <CampaignCard key={campaign.id} data={campaign} hadnleClick={setOpenIdCard} />

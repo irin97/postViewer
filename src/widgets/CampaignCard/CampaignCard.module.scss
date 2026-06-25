@@ -6,11 +6,11 @@
     border: 1px solid var(--border);
     border-radius: var(--border-radius);
     transition: all 0.3s ease-in-out;
-}
 
-.card:hover {
-    border-color: var(--border-hover);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    &:hover {
+        border-color: var(--border-hover);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    }
 }
 
 .icon {
@@ -22,11 +22,11 @@
     justify-content: center;
     border-radius: var(--border-radius);
     background: var(--primary-light);
-}
 
-.icon img {
-    width: 28px;
-    height: 28px;
+    & img {
+        width: 28px;
+        height: 28px;
+    }
 }
 
 .content {
@@ -58,15 +58,15 @@
     border-radius: var(--border-radius);
     cursor: pointer;
     transition: background 0.3s ease-in-out;
-}
 
-.editButton img {
-    height: 20px;
-    width: 20px;
-}
+    &:hover {
+        background: var(--primary-light);
+    }
 
-.editButton:hover {
-    background: var(--primary-light);
+    & img {
+        height: 20px;
+        width: 20px;
+    }
 }
 
 .metrics {
@@ -76,7 +76,7 @@
     margin-bottom: 10px;
     font-size: var(--font-m);
     font-weight: var(--font-medium);
-    color: var(--text-secondary)
+    color: var(--text-secondary);
 }
 
 .type {
@@ -84,12 +84,12 @@
     align-items: center;
     margin-bottom: 15px;
     font-size: var(--font-m);
-    color: var(--text-secondary)
-}
+    color: var(--text-secondary);
 
-.type img {
-    height: 15px;
-    width: 15px;
+    & img {
+        height: 15px;
+        width: 15px;
+    }
 }
 
 .typeValue {
@@ -111,4 +111,27 @@
 
 .dot {
     color: var(--border-hover)
+}
+
+.skeleton {
+    display: inline-block;
+    width: 24px;
+    height: 16px;
+    border-radius: 4px;
+    background: var(--primary-light);
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.5;
+    }
 }

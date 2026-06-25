@@ -23,7 +23,6 @@ export const campaignApi = createApi({
         editCampaignInfo: build.mutation<CallInfoRes, EditCampaignInfoParam>({
             query: ({ data, id }) => {
                 const params = serializeForm(data as unknown as FormValue);
-
                 return {
                     url: `robot/campaign/update/${id}`,
                     method: "PUT",
