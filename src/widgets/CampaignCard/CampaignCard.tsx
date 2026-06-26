@@ -15,12 +15,12 @@ export const CampaignCard = ({ data, hadnleClick }: CampaignCardProps) => {
     const { id, title, step_percent, cps, auto_dial_type } = data
     const { data: newCall, isLoading: newLoading, error: newError } = useNewCallInfoQuery(id, {
         pollingInterval: 600000, // 10 минут
-        // refetchOnFocus: true,
+        refetchOnFocus: true,
         skipPollingIfUnfocused: true,
     });
     const { data: oldCall, isLoading: oldLoading, error: oldError } = useOldCallInfoQuery(id, {
         pollingInterval: 600000, // 10 минут
-        // refetchOnFocus: true,
+        refetchOnFocus: true,
         skipPollingIfUnfocused: true,
     });
 
