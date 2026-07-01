@@ -1,79 +1,79 @@
 .item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 14px;
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: var(--border-radius);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
 }
 
 .left {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
 }
 
 .dot {
-    margin-top: 4px;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
+  margin-top: 4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
 }
 
 .info {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .name {
-    font-size: var(--font-s);
-    font-weight: var(--font-semibold);
-    color: var(--text);
+  font-size: var(--font-s);
+  font-weight: var(--font-semibold);
+  color: var(--text);
 }
 
 .status {
-    margin-top: 2px;
-    padding: 3px 5px;
-    font-size: var(--font-xs);
-    border-radius: 3px;
-    color: var(--white);
+  margin-top: 2px;
+  padding: 3px 5px;
+  font-size: var(--font-xs);
+  border-radius: 3px;
+  color: var(--white);
 }
 
 .time {
-    font-size: var(--font-s);
-    color: var(--text-secondary);
+  font-size: var(--font-s);
+  color: var(--text-secondary);
 }
 
 .active {
-    background: var(--status-active);
+  background: var(--status-active);
 }
 
 .pause {
-    background: var(--status-pause);
+  background: var(--status-pause);
 }
 
 .dnd {
-    background: var(--status-dnd);
+  background: var(--status-dnd);
 }
 
 .card {
-    background: var(--status-card);
+  background: var(--status-card);
 }
 
 .call {
-    background: var(--status-call);
+  background: var(--status-call);
 }
 
 .noActive {
-    background: var(--status-no-active);
+  background: var(--status-no-active);
 }
 
 .incoming {
-    background: var(--status-incoming);
+  background: var(--status-incoming);
 }
 
 .ringing {
-    background: var(--status-ringing);
+  background: var(--status-ringing);
 }

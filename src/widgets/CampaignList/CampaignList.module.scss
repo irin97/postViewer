@@ -1,20 +1,20 @@
 .wrapper {
-    padding-top: 40px;
-    width: 49%;
+  padding-top: 40px;
+  width: 49%;
 }
 
 .list {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .error {
-    padding: 40px 24px;
-    margin: 24px;
-    font-size: var(--font-m);
-    border-radius: var(--border-radius);
-    background: var(--white);
-    color: var(--error);
-    text-align: center;
+  padding: 40px 24px;
+  margin: 24px;
+  font-size: var(--font-m);
+  border-radius: var(--border-radius);
+  background: var(--white);
+  color: var(--error);
+  text-align: center;
 }

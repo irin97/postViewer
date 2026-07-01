@@ -1,20 +1,21 @@
-import { BodyLayout } from "@/widgets/BodyLayout/BodyLayout";
-import { Notification } from "@/shared/ui/Notification/Notification";
-import { useAppDispatch } from "./store/hooks";
-import { useEffect } from "react";
-import { initOperatorsSocket } from "@/shared/lib/initOperatorsSocket";
+import { useEffect } from 'react';
+import { initOperatorsSocket } from '@/shared/lib/initOperatorsSocket';
+import { Notification } from '@/shared/ui/Notification/Notification';
+import { BodyLayout } from '@/widgets/BodyLayout/BodyLayout';
+import { useAppDispatch } from './store/hooks';
 
 const App = () => {
-
   const dispatch = useAppDispatch();
   useEffect(() => {
-    initOperatorsSocket(dispatch)
-  }, [dispatch])
+    initOperatorsSocket(dispatch);
+  }, [dispatch]);
 
-  return <>
-    <Notification />
-    <BodyLayout />
-  </>
-}
+  return (
+    <>
+      <Notification />
+      <BodyLayout />
+    </>
+  );
+};
 
-export default App
+export default App;

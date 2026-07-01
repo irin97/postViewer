@@ -1,44 +1,43 @@
 :root {
-    // colors
-    --white: #ffff;
-    --primary: #1054E4;
-    --primary-light: #eef4ff;
-    --text: #111827;
-    --text-secondary: #374151;
-    --error: #dc2626;
-    --success: #16a34a;
-    --btn-hover: #5f8be9;
-    --background: #F5F5F5;
-    --border: #e5e7eb;
-    --border-hover: #d4d4d8;
+  // colors
+  --white: #ffff;
+  --primary: #1054e4;
+  --primary-light: #eef4ff;
+  --text: #111827;
+  --text-secondary: #374151;
+  --error: #dc2626;
+  --success: #16a34a;
+  --btn-hover: #5f8be9;
+  --background: #f5f5f5;
+  --border: #e5e7eb;
+  --border-hover: #d4d4d8;
 
-    --border-radius: 12px;
+  --border-radius: 12px;
 
-    // statuses
-    --status-active: #16a34a;
-    --status-pause: #f59e0b;
-    --status-dnd: #ef4444;
-    --status-card: #3b82f6;
-    --status-call: #8b5cf6;
-    --status-no-active: #6b7280;
-    --status-incoming: #0ea5e9;
-    --status-ringing: #f97316;
+  // statuses
+  --status-active: #16a34a;
+  --status-pause: #f59e0b;
+  --status-dnd: #ef4444;
+  --status-card: #3b82f6;
+  --status-call: #8b5cf6;
+  --status-no-active: #6b7280;
+  --status-incoming: #0ea5e9;
+  --status-ringing: #f97316;
 
-    // font-size
-    --font-xs: 14px;
-    --font-s: 16px;
-    --font-m: 20px;
-    --font-l: 22px;
+  // font-size
+  --font-xs: 14px;
+  --font-s: 16px;
+  --font-m: 20px;
+  --font-l: 22px;
 
-    //font-weight
-    --font-medium: 500;
-    --font-semibold: 600;
-    --font-bold: 700;
+  //font-weight
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
 }
 
-
 body {
-    font-family: "Inter", sans-serif;
-    font-weight: 400;
-    background-color: var(--background);
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  background-color: var(--background);
 }

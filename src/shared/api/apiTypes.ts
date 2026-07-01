@@ -1,33 +1,33 @@
 export interface LoginType {
-    token: string
+  token: string;
 }
 
 export interface LoginErr {
-    message: string;
-    code: number
+  message: string;
+  code: number;
 }
 
 export interface ActiveCampaignRes {
-    items: CampaignInfo[]
+  items: CampaignInfo[];
 }
 
 export interface CampaignInfo {
-    title: string,
-    id: number,
-    step_percent: number,
-    cps: number,
-    auto_dial_type: string
+  title: string;
+  id: number;
+  step_percent: number;
+  cps: number;
+  auto_dial_type: string;
 
-    [key: string]: unknown;
+  [key: string]: unknown;
 }
 
-export type CallInfoRes = CallInfoType[]
+export type CallInfoRes = CallInfoType[];
 
 export interface CallInfoType {
-    count?: number
+  count?: number;
 }
 
 export interface EditCampaignInfoParam {
-    id: number;
-    data: CampaignInfo;
+  id: number;
+  data: CampaignInfo;
 }
