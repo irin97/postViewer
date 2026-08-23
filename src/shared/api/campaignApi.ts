@@ -1,6 +1,5 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
-import { serializeForm } from '../lib/serializeForm';
-import type { FormValue } from '../lib/serializeForm';
+import { FormValue, serializeForm } from '../lib/serializeForm';
 import type { ActiveCampaignRes, CallInfoRes, EditCampaignInfoParam } from './apiTypes';
 import { baseQueryWithReauth } from './reauthQuery';
 

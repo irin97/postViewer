@@ -37,9 +37,6 @@ export const CampaignList = () => {
     );
   }, [error, dispatch]);
 
-  // if (isLoading) return <Loader />
-  // if (error) return <div className={styles.error}>Не удалось загрузить данные</div>
-
   const campaigns = activeCampaigns?.items ?? [];
   const openCardData = campaigns.find((el) => el.id === openIdCard);
 

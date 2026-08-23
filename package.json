@@ -9,7 +9,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
-    "prepare": "husky"
+    "prepare": "husky",
+    "test": "jest"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.12.0",
@@ -27,7 +28,10 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
     "@trivago/prettier-plugin-sort-imports": "^6.0.2",
+    "@types/jest": "^30.0.0",
     "@types/node": "^24.13.2",
     "@types/qs": "^6.15.1",
     "@types/react": "^19.2.14",
@@ -38,9 +42,14 @@
     "eslint-plugin-react-refresh": "^0.5.3",
     "globals": "^17.7.0",
     "husky": "^9.1.7",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^30.4.2",
+    "jest-environment-jsdom": "^30.4.1",
     "lint-staged": "^16.4.0",
     "prettier": "^3.9.4",
     "sass-embedded": "^1.100.0",
+    "ts-jest": "^29.4.11",
+    "ts-node": "^10.9.2",
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.62.1",
     "vite": "^8.0.12"

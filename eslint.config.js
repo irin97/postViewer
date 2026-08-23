@@ -8,12 +8,15 @@ import tseslint from 'typescript-eslint';
 export default defineConfig([
   globalIgnores(['dist']),
   js.configs.recommended,
+  ...tseslint.configs.recommended,
 
   {
     files: ['**/*.{ts,tsx}'],
     languageOptions: {
-      parser: tseslint.parser,
-      globals: globals.browser,
+      globals: {
+        ...globals.browser,
+        ...globals.jest,
+      },
     },
 
     plugins: {
@@ -25,8 +28,8 @@ export default defineConfig([
       ...reactHooks.configs.recommended.rules,
 
       'react-refresh/only-export-components': 'warn',
-      'no-unused-vars': 'warn',
-      'no-explicit-any': 'off',
+      '@typescript-eslint/no-unused-vars': 'warn',
+      '@typescript-eslint/no-explicit-any': 'off',
     },
   },
 ]);
